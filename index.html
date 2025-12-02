@@ -1,158 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0,user-scalable=no"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Sofia"
-    />
-    <script
-      src="https://kit.fontawesome.com/27605f1ab5.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="icon" type="images/x-icon" href="images/favicon.png" />
-    <title>Irfan Ahmad</title>
-  </head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>Irfan Ahmad — Portfolio</title>
+
+    <!-- Fonts and icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/27605f1ab5.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
+
+    <style>
+      :root{
+        --bg: #0f1724;
+        --card: #0b1220;
+        --muted: #9aa4b2;
+        --accent: #14b8a6;
+        --accent-2: #10b981;
+        --glass: rgba(255,255,255,0.04);
+        --radius: 14px;
+        --max-width: 1100px;
+        --container-padding: 24px;
+      }
+
+      *{box-sizing:border-box}
+      html,body{height:100%;}
+      body{
+        margin:0;
+        font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        background: linear-gradient(180deg,#071025 0%, #071725 60%);
+        color:#e6eef6;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        line-height:1.45;
+        padding:40px 20px;
+        display:flex;
+        justify-content:center;
+      }
+
+      .wrap{
+        width:100%;
+        max-width:var(--max-width);
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
+        border-radius:20px;
+        padding:28px;
+        box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+        backdrop-filter: blur(6px);
+      }
+
+      header{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:16px;
+      }
+
+      .brand{
+        display:flex;
+        align-items:center;
+        gap:14px;
+        text-decoration:none;
+        color:inherit;
+      }
+      .brand .logo{
+        width:48px;
+        height:48px;
+        border-radius:10px;
+        overflow:hidden;
+        display:inline-grid;
+        place-items:center;
+        background:linear-gradient(135deg,var(--accent), var(--accent-2));
+        font-weight:700;
+        font-family:Poppins, Inter, sans-serif;
+      }
+      .brand .name{
+        font-weight:700;
+        font-size:18px;
+        letter-spacing:0.2px;
+      }
+
+      nav{display:flex;gap:12px;align-items:center}
+      .btn{
+        display:inline-flex;
+        align-items:center;
+        gap:8px;
+        padding:10px 14px;
+        border-radius:10px;
+        text-decoration:none;
+        color:var(--bg);
+        background:linear-gradient(90deg,var(--accent),var(--accent-2));
+        font-weight:600;
+        box-shadow: 0 6px 18px rgba(16,185,129,0.12);
+      }
+
+      .content{
+        display:grid;
+        grid-template-columns: 360px 1fr;
+        gap:28px;
+        margin-top:22px;
+      }
+
+      /* left column */
+      .profile-card{
+        background:var(--card);
+        border-radius:var(--radius);
+        padding:22px;
+        min-height:360px;
+        box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      }
+
+      .profile-photo{
+        width:100%;
+        height:360px;
+        border-radius:12px;
+        overflow:hidden;
+        display:block;
+        object-fit:cover;
+      }
+
+      .profile-info{
+        margin-top:14px;
+        display:flex;
+        flex-direction:column;
+        gap:6px;
+      }
+      .title-large{font-family:Poppins,Inter;font-weight:700;font-size:20px}
+      .muted{color:var(--muted);font-size:13px}
+
+      .socials{display:flex;gap:8px;margin-top:10px}
+      .socials a{
+        width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;text-decoration:none;color:var(--accent-2);background:var(--glass);border:1px solid rgba(255,255,255,0.03)
+      }
+
+      /* right column */
+      .hero{
+        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+        border-radius:var(--radius);
+        padding:22px;
+      }
+
+      .hero-header{
+        display:flex;align-items:flex-start;justify-content:space-between;gap:12px
+      }
+      .hero h1{margin:0;font-size:26px;font-family:Poppins}
+      .hero p{margin:8px 0;color:var(--muted)}
+
+      .cta-row{display:flex;gap:12px;margin-top:12px}
+      .secondary{
+        background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px
+      }
+
+      .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+      .chip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+
+      /* Projects grid */
+      .projects{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+      .proj-card{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+      .proj-card h4{margin:0 0 6px 0;color:var(--accent-2)}
+      .proj-card p{margin:0;font-size:13px;color:var(--muted)}
+      .proj-card a{display:inline-block;margin-top:10px;text-decoration:none;color:var(--bg);background:var(--accent-2);padding:8px 10px;border-radius:8px;font-weight:600}
+
+      /* education and experience */
+      .timeline{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      .panel{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+      .panel h3{margin:0 0 8px 0}
+      .panel p{margin:6px 0;color:var(--muted);font-size:14px}
+
+      footer{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
+
+      /* floating linkedin button */
+      .float-linkedin{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-grid;place-items:center;color:var(--bg);text-decoration:none;box-shadow:0 10px 30px rgba(16,185,129,0.12)}
+
+      @media (max-width:980px){
+        .content{grid-template-columns:1fr;}
+        .projects{grid-template-columns:1fr}
+        .timeline{grid-template-columns:1fr}
+        .profile-photo{height:300px}
+      }
+
+    </style>
+  </head>
   <body>
-    <div class="container">
-      <div class="linkedin">
-        <a
-          href="https://www.linkedin.com/in/irfan-ahmad-568251234/"
-          target="_blank"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-      </div>
-      <div class="head">
-        <a href="#main">Irfan Ahmad</a>
-      </div>
-      <div class="main" id="main">
-        <div class="left">
-          <img src="images/IMG_1233.jpg" alt="" />
-        </div>
-        <div class="right">
-          <div class="txt">
-            <span>Hi, I am Irfan, a ServiceNow certified application developer.</span>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="#main">
+          <div class="logo">IA</div>
+          <div class="name">Irfan Ahmad</div>
+        </a>
+
+        <nav>
+          <a class="btn" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i> Hire Me</a>
+        </nav>
+      </header>
+
+      <main id="main" class="content">
+        <section class="profile-card">
+          <img class="profile-photo" src="images/IMG_1233.jpg" alt="Irfan Ahmad">
+
+          <div class="profile-info">
+            <div class="title-large">Irfan Ahmad</div>
+            <div class="muted">ServiceNow certified application developer and full stack web developer</div>
+
+            <div class="socials">
+              <a title="LinkedIn" href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              <a title="GitHub" href="https://github.com/hereiamirfan" target="_blank"><i class="fa-brands fa-github"></i></a>
+              <a title="Email" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+
+            <div style="margin-top:12px">
+              <div style="font-weight:700;margin-bottom:8px">Skills</div>
+              <div class="chips">
+                <span class="chip">HTML</span>
+                <span class="chip">CSS</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">React</span>
+                <span class="chip">Next.js</span>
+                <span class="chip">MSSQL</span>
+                <span class="chip">Python</span>
+                <span class="chip">FastAPI</span>
+                <span class="chip">Git</span>
+              </div>
+            </div>
+
           </div>
-          <div class="but">
-            <a href="mailto:irfanwani220@gmail.com"
-              >Hire Me <i class="fa fa-envelope"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-      <div class="about">
-        <div class="des">
-          <h3 class="title">About me</h3>
-          <div class="span">
-            My name is Irfan Ahmad, as a dedicated and passionate web developer, I specialize in crafting engaging and user-friendly web experiences. With expertise in HTML, CSS, and JavaScript, as well as proficiency in C# and ASP.NET, I have honed my skills in both front-end and back-end development. My journey in the world of web development has equipped me with a keen eye for design, an understanding of user experience principles, and the ability to translate complex technical requirements into efficient and elegant solutions.
-          </div>
-        </div>
-        <div class="skill">
-          <ul>
-            <h3 class="title">Skills</h3>
-            <li>HTML | CSS | Javascript</li>
-            <li>React.js |Next.js</li>
-            <li>MsSql | Mongodb</li>
-            <li>Python | FastApi</li>
-            <li>Git | GitHub</li>
-          </ul>
-        </div>
-      </div>
-      <div class="project">
-        <div class="ti">
-          <h3 class="title">Projects</h3>
-        </div>
-        <div class="projs">
-          <div class="ttt">
-            <h4 class="subtitle">- Assignment Management System</h4>
-            <h6>University Project</h6>
-            Using - Asp.Net(web forms) | C# | MSSQL
-            <div class="play">
-              <a href="https://github.com/hereiamirfan/universityProject"
-                >GitHub <i class="fa-solid fa-eye"></i
-              ></a>
+        </section>
+
+        <section class="hero">
+          <div class="hero-header">
+            <div>
+              <h1>Hello, I am Irfan</h1>
+              <p>I build elegant web apps and ServiceNow solutions with a focus on great user experience</p>
+            </div>
+            <div style="text-align:right">
+              <div style="font-weight:700;color:var(--accent-2)">ServiceNow Certified Application Developer</div>
             </div>
           </div>
-          <div class="ttt">
-            <h4 class="subtitle">- Tic Tac Toe</h4>
-            Using - HTML | CSS | JAVASCRIPT
-            <div class="play">
-              <a href="tictactoe/tictactoe.html"
-                >Play Now <i class="fa-solid fa-play"></i
-              ></a>
+
+          <div class="cta-row">
+            <a class="btn" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i> Contact</a>
+            <a class="secondary" href="https://github.com/hereiamirfan" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+
+          <div class="projects">
+            <div class="proj-card">
+              <h4>Assignment Management System</h4>
+              <p>University project built with ASP.NET Web Forms, C#, MSSQL</p>
+              <a href="https://github.com/hereiamirfan/universityProject" target="_blank">View on GitHub</a>
+            </div>
+
+            <div class="proj-card">
+              <h4>Tic Tac Toe</h4>
+              <p>Vanilla HTML/CSS/JavaScript interactive game</p>
+              <a href="tictactoe/tictactoe.html" target="_blank">Play</a>
+            </div>
+
+            <div class="proj-card">
+              <h4>Random Password Generator</h4>
+              <p>Small utility to create secure passwords</p>
+              <a href="cal/cal.html" target="_blank">Open</a>
+            </div>
+
+            <div class="proj-card">
+              <h4>Basic Calculator</h4>
+              <p>Lightweight calculator built for practice</p>
+              <a href="calculator/cal.html" target="_blank">Use</a>
             </div>
           </div>
-          <div class="ttt">
-            <h4 class="subtitle">- Random Password Generator</h4>
-            Using - HTML | CSS | JAVASCRIPT
-            <div class="play">
-              <a href="cal/cal.html"
-                >Generate <i class="fa-solid fa-lock"></i
-              ></a>
+
+          <div class="timeline">
+            <div class="panel">
+              <h3>Education</h3>
+              <p>BCA, University of Kashmir, 2021 - 7.05 CGPA</p>
+              <p>MCA, Islamic University of Science and Technology, 2023</p>
+            </div>
+
+            <div class="panel">
+              <h3>Experience</h3>
+              <p><strong>ServiceNow Specialist</strong> EnableNow Technology Solutions Pvt. Ltd. 2024 to present</p>
+              <p><strong>Web Developer</strong> DcodeFuture 2019 to 2024</p>
+              <p><strong>Freelancer</strong> Social media and graphic design 2021 to present</p>
             </div>
           </div>
-          <div class="ttt">
-            <h4 class="subtitle">- Basic Calculator</h4>
-            Using - HTML | CSS | JAVASCRIPT
-            <div class="play">
-              <a href="calculator/cal.html"
-                >Use Now <i class="fa fa-calculator"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="edu">
-        <div class="tit">
-          <h3 class="title">Education</h3>
-        </div>
-        <div class="eds">
-          <div class="dtl">
-            <h4 class="subtitle">
-              - Bachelors In Computer Applications - 2021
-            </h4>
-            University of Kasmir (7.05 CGPA)
-          </div>
-          <div class="dtl">
-            <h4 class="subtitle">
-              - Masters In Computer Applications - 2023
-            </h4>
-            Islamic University of Science And Technology
-          </div>
-        </div>
-      </div>
-      <div class="exp">
-        <div class="titl">
-          <h3 class="title">Experence</h3>
-        </div>
-        <div class="detl">
-          <div class="aa">
-            <h4 class="subtitle">- ServiceNow Specialist - 2024-Present</h4>
-            EnableNow Technology Solutions Pvt. Ltd.
-          </div>
-          <div class="aa">
-            <h4 class="subtitle">- Web Developer - 2019-2024</h4>
-            DcodeFuture
-          </div>
-          <div class="aa">
-            <h4 class="subtitle">- Social Media Marketting - 2021-Present</h4>
-            Freelancer
-          </div>
-          <div class="aa">
-            <h4 class="subtitle">- Graphic Designing - 2021-Present</h4>
-            Freelancer
-          </div>
-        </div>
-      </div>
-      <hr>
-      <div class="footer">&copy; Irfan Ahmad</div>
+
+        </section>
+      </main>
+
+      <footer>
+        <div style="color:var(--muted)">&copy; Irfan Ahmad</div>
+        <div style="color:var(--muted);font-size:13px">Built with care</div>
+      </footer>
     </div>
+
+    <a class="float-linkedin" href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank" title="LinkedIn">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
   </body>
 </html>
