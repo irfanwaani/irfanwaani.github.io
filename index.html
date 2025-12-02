@@ -10,291 +10,125 @@
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/27605f1ab5.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
 
-    <style>
-      :root{
-        --bg: #0f1724;
-        --card: #0b1220;
-        --muted: #9aa4b2;
-        --accent: #14b8a6;
-        --accent-2: #10b981;
-        --glass: rgba(255,255,255,0.04);
-        --radius: 14px;
-        --max-width: 1100px;
-        --container-padding: 24px;
-      }
-
-      *{box-sizing:border-box}
-      html,body{height:100%;}
-      body{
-        margin:0;
-        font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-        background: linear-gradient(180deg,#071025 0%, #071725 60%);
-        color:#e6eef6;
-        -webkit-font-smoothing:antialiased;
-        -moz-osx-font-smoothing:grayscale;
-        line-height:1.45;
-        padding:40px 20px;
-        display:flex;
-        justify-content:center;
-      }
-
-      .wrap{
-        width:100%;
-        max-width:var(--max-width);
-        background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
-        border-radius:20px;
-        padding:28px;
-        box-shadow: 0 10px 30px rgba(2,6,23,0.7);
-        backdrop-filter: blur(6px);
-      }
-
-      header{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:16px;
-      }
-
-      .brand{
-        display:flex;
-        align-items:center;
-        gap:14px;
-        text-decoration:none;
-        color:inherit;
-      }
-      .brand .logo{
-        width:48px;
-        height:48px;
-        border-radius:10px;
-        overflow:hidden;
-        display:inline-grid;
-        place-items:center;
-        background:linear-gradient(135deg,var(--accent), var(--accent-2));
-        font-weight:700;
-        font-family:Poppins, Inter, sans-serif;
-      }
-      .brand .name{
-        font-weight:700;
-        font-size:18px;
-        letter-spacing:0.2px;
-      }
-
-      nav{display:flex;gap:12px;align-items:center}
-      .btn{
-        display:inline-flex;
-        align-items:center;
-        gap:8px;
-        padding:10px 14px;
-        border-radius:10px;
-        text-decoration:none;
-        color:var(--bg);
-        background:linear-gradient(90deg,var(--accent),var(--accent-2));
-        font-weight:600;
-        box-shadow: 0 6px 18px rgba(16,185,129,0.12);
-      }
-
-      .content{
-        display:grid;
-        grid-template-columns: 360px 1fr;
-        gap:28px;
-        margin-top:22px;
-      }
-
-      /* left column */
-      .profile-card{
-        background:var(--card);
-        border-radius:var(--radius);
-        padding:22px;
-        min-height:360px;
-        box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-      }
-
-      .profile-photo{
-        width:100%;
-        height:360px;
-        border-radius:12px;
-        overflow:hidden;
-        display:block;
-        object-fit:cover;
-      }
-
-      .profile-info{
-        margin-top:14px;
-        display:flex;
-        flex-direction:column;
-        gap:6px;
-      }
-      .title-large{font-family:Poppins,Inter;font-weight:700;font-size:20px}
-      .muted{color:var(--muted);font-size:13px}
-
-      .socials{display:flex;gap:8px;margin-top:10px}
-      .socials a{
-        width:40px;height:40px;border-radius:10px;display:inline-grid;place-items:center;text-decoration:none;color:var(--accent-2);background:var(--glass);border:1px solid rgba(255,255,255,0.03)
-      }
-
-      /* right column */
-      .hero{
-        background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-        border-radius:var(--radius);
-        padding:22px;
-      }
-
-      .hero-header{
-        display:flex;align-items:flex-start;justify-content:space-between;gap:12px
-      }
-      .hero h1{margin:0;font-size:26px;font-family:Poppins}
-      .hero p{margin:8px 0;color:var(--muted)}
-
-      .cta-row{display:flex;gap:12px;margin-top:12px}
-      .secondary{
-        background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;gap:8px
-      }
-
-      .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-      .chip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
-
-      /* Projects grid */
-      .projects{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-      .proj-card{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-      .proj-card h4{margin:0 0 6px 0;color:var(--accent-2)}
-      .proj-card p{margin:0;font-size:13px;color:var(--muted)}
-      .proj-card a{display:inline-block;margin-top:10px;text-decoration:none;color:var(--bg);background:var(--accent-2);padding:8px 10px;border-radius:8px;font-weight:600}
-
-      /* education and experience */
-      .timeline{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-      .panel{background:rgba(255,255,255,0.02);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
-      .panel h3{margin:0 0 8px 0}
-      .panel p{margin:6px 0;color:var(--muted);font-size:14px}
-
-      footer{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center}
-
-      /* floating linkedin button */
-      .float-linkedin{position:fixed;right:22px;bottom:22px;width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-grid;place-items:center;color:var(--bg);text-decoration:none;box-shadow:0 10px 30px rgba(16,185,129,0.12)}
-
-      @media (max-width:980px){
-        .content{grid-template-columns:1fr;}
-        .projects{grid-template-columns:1fr}
-        .timeline{grid-template-columns:1fr}
-        .profile-photo{height:300px}
-      }
-
-    </style>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div class="wrap">
-      <header>
-        <a class="brand" href="#main">
-          <div class="logo">IA</div>
-          <div class="name">Irfan Ahmad</div>
+  <body class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-slate-100 antialiased">
+    <div class="max-w-5xl mx-auto p-6 md:p-10 rounded-2xl bg-gradient-to-b from-white/3 to-transparent shadow-xl backdrop-blur-sm mt-8">
+
+      <header class="flex items-center justify-between">
+        <a href="#main" class="flex items-center gap-4 no-underline">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-400 grid place-items-center font-bold text-slate-900">IA</div>
+          <div class="text-lg font-semibold">Irfan Ahmad</div>
         </a>
 
-        <nav>
-          <a class="btn" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i> Hire Me</a>
+        <nav class="flex items-center gap-3">
+          <a href="mailto:irfanwani220@gmail.com" class="inline-flex items-center gap-2 bg-emerald-400 text-slate-900 px-4 py-2 rounded-lg font-semibold shadow"> <i class="fa fa-envelope"></i> Hire Me</a>
         </nav>
       </header>
 
-      <main id="main" class="content">
-        <section class="profile-card">
-          <img class="profile-photo" src="images/IMG_1233.jpg" alt="Irfan Ahmad">
+      <main id="main" class="mt-6 grid grid-cols-1 md:grid-cols-[340px_1fr] gap-6">
 
-          <div class="profile-info">
-            <div class="title-large">Irfan Ahmad</div>
-            <div class="muted">ServiceNow certified application developer and full stack web developer</div>
+        <!-- left profile card -->
+        <aside class="bg-slate-900/40 border border-white/5 rounded-2xl p-4">
+          <img src="images/IMG_1233.jpg" alt="Irfan Ahmad" class="w-full h-72 md:h-80 object-cover rounded-lg shadow-sm" />
 
-            <div class="socials">
-              <a title="LinkedIn" href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-              <a title="GitHub" href="https://github.com/hereiamirfan" target="_blank"><i class="fa-brands fa-github"></i></a>
-              <a title="Email" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i></a>
+          <div class="mt-4">
+            <h2 class="text-xl font-semibold">Irfan Ahmad</h2>
+            <p class="text-sm text-slate-300 mt-1">ServiceNow certified application developer and full stack web developer</p>
+
+            <div class="flex items-center gap-3 mt-4">
+              <a href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 grid place-items-center text-emerald-300"> <i class="fa-brands fa-linkedin"></i> </a>
+              <a href="https://github.com/hereiamirfan" target="_blank" class="w-10 h-10 rounded-lg bg-white/5 grid place-items-center text-emerald-300"> <i class="fa-brands fa-github"></i> </a>
+              <a href="mailto:irfanwani220@gmail.com" class="w-10 h-10 rounded-lg bg-white/5 grid place-items-center text-emerald-300"> <i class="fa fa-envelope"></i> </a>
             </div>
 
-            <div style="margin-top:12px">
-              <div style="font-weight:700;margin-bottom:8px">Skills</div>
-              <div class="chips">
-                <span class="chip">HTML</span>
-                <span class="chip">CSS</span>
-                <span class="chip">JavaScript</span>
-                <span class="chip">React</span>
-                <span class="chip">Next.js</span>
-                <span class="chip">MSSQL</span>
-                <span class="chip">Python</span>
-                <span class="chip">FastAPI</span>
-                <span class="chip">Git</span>
+            <div class="mt-4">
+              <h3 class="text-sm font-semibold">Skills</h3>
+              <div class="flex flex-wrap gap-2 mt-3">
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">HTML</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">CSS</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">JavaScript</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">React</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">Next.js</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">MSSQL</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">Python</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">FastAPI</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-sm">Git</span>
               </div>
             </div>
-
           </div>
-        </section>
+        </aside>
 
-        <section class="hero">
-          <div class="hero-header">
+        <!-- right content -->
+        <section class="bg-slate-900/40 border border-white/5 rounded-2xl p-6">
+          <div class="flex items-start justify-between gap-4">
             <div>
-              <h1>Hello, I am Irfan</h1>
-              <p>I build elegant web apps and ServiceNow solutions with a focus on great user experience</p>
-            </div>
-            <div style="text-align:right">
-              <div style="font-weight:700;color:var(--accent-2)">ServiceNow Certified Application Developer</div>
-            </div>
-          </div>
-
-          <div class="cta-row">
-            <a class="btn" href="mailto:irfanwani220@gmail.com"><i class="fa fa-envelope"></i> Contact</a>
-            <a class="secondary" href="https://github.com/hereiamirfan" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-          </div>
-
-          <div class="projects">
-            <div class="proj-card">
-              <h4>Assignment Management System</h4>
-              <p>University project built with ASP.NET Web Forms, C#, MSSQL</p>
-              <a href="https://github.com/hereiamirfan/universityProject" target="_blank">View on GitHub</a>
+              <h1 class="text-2xl md:text-3xl font-bold">Hello, I am Irfan</h1>
+              <p class="mt-2 text-slate-300">I build elegant web apps and ServiceNow solutions with a focus on great user experience</p>
             </div>
 
-            <div class="proj-card">
-              <h4>Tic Tac Toe</h4>
-              <p>Vanilla HTML/CSS/JavaScript interactive game</p>
-              <a href="tictactoe/tictactoe.html" target="_blank">Play</a>
-            </div>
-
-            <div class="proj-card">
-              <h4>Random Password Generator</h4>
-              <p>Small utility to create secure passwords</p>
-              <a href="cal/cal.html" target="_blank">Open</a>
-            </div>
-
-            <div class="proj-card">
-              <h4>Basic Calculator</h4>
-              <p>Lightweight calculator built for practice</p>
-              <a href="calculator/cal.html" target="_blank">Use</a>
+            <div class="text-right">
+              <div class="text-sm font-semibold text-emerald-300">ServiceNow Certified Application Developer</div>
             </div>
           </div>
 
-          <div class="timeline">
-            <div class="panel">
-              <h3>Education</h3>
-              <p>BCA, University of Kashmir, 2021 - 7.05 CGPA</p>
-              <p>MCA, Islamic University of Science and Technology, 2023</p>
-            </div>
-
-            <div class="panel">
-              <h3>Experience</h3>
-              <p><strong>ServiceNow Specialist</strong> EnableNow Technology Solutions Pvt. Ltd. 2024 to present</p>
-              <p><strong>Web Developer</strong> DcodeFuture 2019 to 2024</p>
-              <p><strong>Freelancer</strong> Social media and graphic design 2021 to present</p>
-            </div>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <a href="mailto:irfanwani220@gmail.com" class="inline-flex items-center gap-2 bg-emerald-400 text-slate-900 px-4 py-2 rounded-lg font-semibold"> <i class="fa fa-envelope"></i> Contact</a>
+            <a href="https://github.com/hereiamirfan" target="_blank" class="inline-flex items-center gap-2 border border-white/6 text-slate-300 px-4 py-2 rounded-lg"> <i class="fa-brands fa-github"></i> GitHub</a>
           </div>
 
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <article class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h3 class="text-emerald-300 font-semibold">Assignment Management System</h3>
+              <p class="text-sm text-slate-300 mt-1">University project built with ASP.NET Web Forms, C#, MSSQL</p>
+              <a href="https://github.com/hereiamirfan/universityProject" target="_blank" class="inline-block mt-3 bg-emerald-400 text-slate-900 px-3 py-1 rounded-md text-sm font-semibold">View on GitHub</a>
+            </article>
+
+            <article class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h3 class="text-emerald-300 font-semibold">Tic Tac Toe</h3>
+              <p class="text-sm text-slate-300 mt-1">Vanilla HTML/CSS/JavaScript interactive game</p>
+              <a href="tictactoe/tictactoe.html" target="_blank" class="inline-block mt-3 bg-emerald-400 text-slate-900 px-3 py-1 rounded-md text-sm font-semibold">Play</a>
+            </article>
+
+            <article class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h3 class="text-emerald-300 font-semibold">Random Password Generator</h3>
+              <p class="text-sm text-slate-300 mt-1">Small utility to create secure passwords</p>
+              <a href="cal/cal.html" target="_blank" class="inline-block mt-3 bg-emerald-400 text-slate-900 px-3 py-1 rounded-md text-sm font-semibold">Open</a>
+            </article>
+
+            <article class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h3 class="text-emerald-300 font-semibold">Basic Calculator</h3>
+              <p class="text-sm text-slate-300 mt-1">Lightweight calculator built for practice</p>
+              <a href="calculator/cal.html" target="_blank" class="inline-block mt-3 bg-emerald-400 text-slate-900 px-3 py-1 rounded-md text-sm font-semibold">Use</a>
+            </article>
+          </div>
+
+          <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h4 class="font-semibold">Education</h4>
+              <p class="text-sm text-slate-300 mt-2">BCA, University of Kashmir, 2021 - 7.05 CGPA</p>
+              <p class="text-sm text-slate-300">MCA, Islamic University of Science and Technology, 2023</p>
+            </div>
+
+            <div class="rounded-lg bg-white/3 p-4 border border-white/5">
+              <h4 class="font-semibold">Experience</h4>
+              <p class="text-sm text-slate-300 mt-2"><strong>ServiceNow Specialist</strong> EnableNow Technology Solutions Pvt. Ltd. 2024 to present</p>
+              <p class="text-sm text-slate-300"><strong>Web Developer</strong> DcodeFuture 2019 to 2024</p>
+              <p class="text-sm text-slate-300"><strong>Freelancer</strong> Social media and graphic design 2021 to present</p>
+            </div>
+          </div>
         </section>
       </main>
 
-      <footer>
-        <div style="color:var(--muted)">&copy; Irfan Ahmad</div>
-        <div style="color:var(--muted);font-size:13px">Built with care</div>
+      <footer class="mt-6 flex items-center justify-between text-sm text-slate-400">
+        <div>&copy; Irfan Ahmad</div>
+        <div>Built with care</div>
       </footer>
     </div>
 
-    <a class="float-linkedin" href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank" title="LinkedIn">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
+    <a href="https://www.linkedin.com/in/irfan-ahmad-568251234/" target="_blank" class="fixed right-6 bottom-6 w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-400 grid place-items-center text-slate-900 shadow-lg"> <i class="fa-brands fa-linkedin"></i> </a>
+
   </body>
 </html>
